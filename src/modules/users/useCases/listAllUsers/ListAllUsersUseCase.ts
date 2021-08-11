@@ -15,6 +15,10 @@ class ListAllUsersUseCase {
             throw new Error("User not found");
         }
 
+        if (userExists.admin === false) {
+            throw new Error("User is not admin");
+        }
+
         const user = this.usersRepository.list();
         return user;
     }
